@@ -8,4 +8,28 @@ class Receipe < ActiveRecord::Base
   has_many :aromas, through: :aroma_bundles
 
   accepts_nested_attributes_for :aroma_bundles, allow_destroy: true
+
+  #################
+  ## Validations ##
+  #################
+  validate :not_too_much_aromas
+
+
+  ######################
+  ## Instance Methods ##
+  ######################
+  def not_too_much_aromas
+    overall_aroma = self.aroma_bundles.map(&:percent).sum
+
+    # INFO: Same as:
+    # overall_aroma = self.aroma_bundles.map do |bundle|
+    #   bundle.percent
+    # end
+
+    if overall_aroma > 30
+      self.errors.add(:aroma_percentage, 'can\'t be more than 30!!')
+    else
+      true
+    end
+  end
 end

@@ -1,5 +1,5 @@
 class AromaBundle < ActiveRecord::Base
-  attr_accessible :aroma_id, :receipe_id
+  attr_accessible :aroma_id, :receipe_id, :percent
 
   ##################
   ## Associations ##

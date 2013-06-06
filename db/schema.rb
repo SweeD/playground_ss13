@@ -11,13 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130606064017) do
+ActiveRecord::Schema.define(:version => 20130606072730) do
 
   create_table "aroma_bundles", :force => true do |t|
     t.integer  "aroma_id"
     t.integer  "receipe_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.decimal  "percent"
   end
 
   create_table "aromas", :force => true do |t|

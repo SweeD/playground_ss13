@@ -50,7 +50,10 @@ class ReceipesController < ApplicationController
         format.html { redirect_to @receipe, notice: 'Receipe was successfully created.' }
         format.json { render json: @receipe, status: :created, location: @receipe }
       else
-        format.html { render action: "new" }
+        format.html do
+          @selectable_aromas = Aroma.all
+          render action: "new"
+        end
         format.json { render json: @receipe.errors, status: :unprocessable_entity }
       end
     end
@@ -66,7 +69,10 @@ class ReceipesController < ApplicationController
         format.html { redirect_to @receipe, notice: 'Receipe was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
+        format.html do
+          @selectable_aromas = Aroma.all
+          render action: "edit"
+        end
         format.json { render json: @receipe.errors, status: :unprocessable_entity }
       end
     end

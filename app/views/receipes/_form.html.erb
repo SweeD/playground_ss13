@@ -18,6 +18,7 @@
 
   <%= f.fields_for :aroma_bundles do |bundle_form| %>
     Aroma: <%= bundle_form.collection_select :aroma_id, @selectable_aromas ,:id, :name %>
+    <%= bundle_form.text_field :percent, size: 5 %>%
     <%= bundle_form.link_to_remove "Remove this aroma" %>
   <% end %>
   <p><%= f.link_to_add "Add a aroma", :aroma_bundles %></p>
