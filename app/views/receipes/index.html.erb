@@ -1,0 +1,23 @@
+<h1>Listing receipes</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @receipes.each do |receipe| %>
+  <tr>
+    <td><%= receipe.name %></td>
+    <td><%= link_to 'Show', receipe %></td>
+    <td><%= link_to 'Edit', edit_receipe_path(receipe) %></td>
+    <td><%= link_to 'Destroy', receipe, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Receipe', new_receipe_path %>

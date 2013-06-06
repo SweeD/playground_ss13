@@ -1,0 +1,28 @@
+<%= nested_form_for(@receipe) do |f| %>
+  <% if @receipe.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@receipe.errors.count, "error") %> prohibited this receipe from being saved:</h2>
+
+      <ul>
+      <% @receipe.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>
+    Name: 
+    <%= f.text_field :name %>
+  </p>
+
+  <%= f.fields_for :aromas do |aroma_form| %>
+    Aromenname: <%= aroma_form.text_field :name %>
+    <%= aroma_form.link_to_remove "Remove this aroma" %>
+  <% end %>
+  <p><%= f.link_to_add "Add a aroma", :aromas %></p>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
