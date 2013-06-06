@@ -1,10 +1,10 @@
-<%= nested_form_for(@receipe) do |f| %>
-  <% if @receipe.errors.any? %>
+<%= nested_form_for(receipe) do |f| %>
+  <% if receipe.errors.any? %>
     <div id="error_explanation">
-      <h2><%= t('.errors_occured', count: @receipe.errors.count) %>
+      <h2><%= t('.errors_occured', count: receipe.errors.count) %>
 
       <ul>
-      <% @receipe.errors.full_messages.each do |msg| %>
+      <% receipe.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
@@ -18,7 +18,7 @@
 
   <%= f.fields_for :aroma_bundles do |bundle_form| %>
     <%= t('receipes.attributes.aroma') %>
-    <%= bundle_form.collection_select :aroma_id, @selectable_aromas ,:id, :name %>
+    <%= bundle_form.collection_select :aroma_id, selectable_aromas ,:id, :name %>
     <%= bundle_form.text_field :percent, size: 5 %>%
     <%= bundle_form.link_to_remove t('receipes.links.remove_aroma') %>
   <% end %>

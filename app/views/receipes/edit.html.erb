@@ -1,6 +1,6 @@
 <h1><%= t('.title', name: @receipe.name) %></h1>
 
-<%= render 'form' %>
+<%= render 'form', receipe: @receipe, selectable_aromas: @selectable_aromas %>
 
 <%= link_to 'Show', @receipe %> |
 <%= link_to 'Back', receipes_path %>
