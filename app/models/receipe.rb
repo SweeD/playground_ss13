@@ -19,7 +19,10 @@ class Receipe < ActiveRecord::Base
   ## Instance Methods ##
   ######################
   def not_too_much_aromas
-    overall_aroma = self.aroma_bundles.map(&:percent).sum
+    overall_aroma = self.aroma_bundles.inject(0) do |memo, bundle|
+      memo += bundle.percent if bundle.percent.is_a?(Integer) || bundle.percent.is_a?(Float)
+      memo
+    end
 
     # INFO: Same as:
     # overall_aroma = self.aroma_bundles.map do |bundle|
