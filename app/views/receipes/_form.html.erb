@@ -8,6 +8,13 @@
         <li><%= msg %></li>
       <% end %>
       </ul>
+
+      <% if receipe.errors[:aroma_percentage].present? %>
+        Additional:
+        <ul>
+          <li>Folgendes Bundle wurde angepasst: <%= receipe.highest_aroma_percentage_bundle.aroma.name %></li>
+        </ul>
+      <% end %>
     </div>
   <% end %>
 
@@ -17,9 +24,10 @@
   </p>
 
   <%= f.fields_for :aroma_bundles do |bundle_form| %>
+    <%= mark_as_changed(receipe, bundle_form) %>
     <%= t('receipes.attributes.aroma') %>
     <%= bundle_form.collection_select :aroma_id, selectable_aromas ,:id, :name %>
-    <%= bundle_form.text_field :percent, size: 5 %>%
+    <%= bundle_form.text_field :percent, size: 5 %>
     <%= bundle_form.link_to_remove t('receipes.links.remove_aroma') %>
   <% end %>
   <p><%= f.link_to_add t('receipes.links.add_aroma'), :aroma_bundles %></p>

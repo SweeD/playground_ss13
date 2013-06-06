@@ -50,6 +50,7 @@ class ReceipesController < ApplicationController
         format.html { redirect_to @receipe, notice: 'Receipe was successfully created.' }
         format.json { render json: @receipe, status: :created, location: @receipe }
       else
+        @receipe.fix_highest_aroma_percentage!
         format.html do
           @selectable_aromas = Aroma.all
           render action: "new"
@@ -69,6 +70,7 @@ class ReceipesController < ApplicationController
         format.html { redirect_to @receipe, notice: 'Receipe was successfully updated.' }
         format.json { head :no_content }
       else
+        @receipe.fix_highest_aroma_percentage!
         format.html do
           @selectable_aromas = Aroma.all
           render action: "edit"
