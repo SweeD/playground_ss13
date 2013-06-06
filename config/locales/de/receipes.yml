@@ -1,0 +1,21 @@
+de:
+  receipes:
+    attributes:
+      name: 'Name'
+      aroma: 'Aroma'
+
+    links:
+      back: 'Zurück'
+      remove_aroma: 'Aroma löschen'
+      add_aroma: 'Aroma hinzufügen'
+
+    new:
+      title: 'Neues Rezept anlegen'
+
+    edit:
+      title: 'Rezept "%{name}" bearbeiten'
+
+    form:
+      errors_occured:
+        one: 'Folgender Fehler hat das Speichern verhindert:'
+        other: 'Folgende %{count} Fehler haben das Speichern verhindert:'

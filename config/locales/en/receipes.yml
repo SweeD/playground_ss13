@@ -1,0 +1,21 @@
+de:
+  receipes:
+    attributes:
+      name: 'Name'
+      aroma: 'Aroma'
+
+    links:
+      back: 'Back'
+      remove_aroma: 'remove Aroma'
+      add_aroma: 'add Aroma'
+
+    new:
+      title: 'Create new receipe'
+
+    edit:
+      title: 'Edit receipe "%{name}"'
+
+    form:
+      errors_occured:
+        one: 'Following errors prevented saving:'
+        other: 'Following %{count} errors prevented from saving:'

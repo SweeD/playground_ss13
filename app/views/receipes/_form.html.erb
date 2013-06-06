@@ -1,7 +1,7 @@
 <%= nested_form_for(@receipe) do |f| %>
   <% if @receipe.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@receipe.errors.count, "error") %> prohibited this receipe from being saved:</h2>
+      <h2><%= t('.errors_occured', count: @receipe.errors.count) %>
 
       <ul>
       <% @receipe.errors.full_messages.each do |msg| %>
@@ -12,16 +12,17 @@
   <% end %>
 
   <p>
-    Name: 
+    <%= t('receipes.attributes.name') %>
     <%= f.text_field :name %>
   </p>
 
   <%= f.fields_for :aroma_bundles do |bundle_form| %>
-    Aroma: <%= bundle_form.collection_select :aroma_id, @selectable_aromas ,:id, :name %>
+    <%= t('receipes.attributes.aroma') %>
+    <%= bundle_form.collection_select :aroma_id, @selectable_aromas ,:id, :name %>
     <%= bundle_form.text_field :percent, size: 5 %>%
-    <%= bundle_form.link_to_remove "Remove this aroma" %>
+    <%= bundle_form.link_to_remove t('receipes.links.remove_aroma') %>
   <% end %>
-  <p><%= f.link_to_add "Add a aroma", :aroma_bundles %></p>
+  <p><%= f.link_to_add t('receipes.links.add_aroma'), :aroma_bundles %></p>
 
   <div class="actions">
     <%= f.submit %>

@@ -20,7 +20,7 @@ class Receipe < ActiveRecord::Base
   ######################
   def not_too_much_aromas
     overall_aroma = self.aroma_bundles.inject(0) do |memo, bundle|
-      memo += bundle.percent if bundle.percent.is_a?(Integer) || bundle.percent.is_a?(Float)
+      memo += bundle.percent if bundle.percent.is_a?(Integer) || bundle.percent.is_a?(BigDecimal)
       memo
     end
 
@@ -30,7 +30,7 @@ class Receipe < ActiveRecord::Base
     # end
 
     if overall_aroma > 30
-      self.errors.add(:aroma_percentage, 'can\'t be more than 30!!')
+      self.errors.add(:aroma_percentage, I18n.t('activerecord.errors.receipe.aroma_percentage.too_much'))
     else
       true
     end
