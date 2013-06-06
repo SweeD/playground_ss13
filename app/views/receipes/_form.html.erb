@@ -16,11 +16,11 @@
     <%= f.text_field :name %>
   </p>
 
-  <%= f.fields_for :aromas do |aroma_form| %>
-    Aromenname: <%= aroma_form.text_field :name %>
-    <%= aroma_form.link_to_remove "Remove this aroma" %>
+  <%= f.fields_for :aroma_bundles do |bundle_form| %>
+    Aroma: <%= bundle_form.collection_select :aroma_id, @selectable_aromas ,:id, :name %>
+    <%= bundle_form.link_to_remove "Remove this aroma" %>
   <% end %>
-  <p><%= f.link_to_add "Add a aroma", :aromas %></p>
+  <p><%= f.link_to_add "Add a aroma", :aroma_bundles %></p>
 
   <div class="actions">
     <%= f.submit %>

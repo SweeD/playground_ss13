@@ -1,5 +1,5 @@
 class Receipe < ActiveRecord::Base
-  attr_accessible :name, :aromas_attributes
+  attr_accessible :name, :aroma_bundles_attributes
 
   ##################
   ## Associations ##
@@ -7,5 +7,5 @@ class Receipe < ActiveRecord::Base
   has_many :aroma_bundles
   has_many :aromas, through: :aroma_bundles
 
-  accepts_nested_attributes_for :aromas, allow_destroy: true
+  accepts_nested_attributes_for :aroma_bundles, allow_destroy: true
 end

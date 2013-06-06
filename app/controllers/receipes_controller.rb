@@ -25,7 +25,8 @@ class ReceipesController < ApplicationController
   # GET /receipes/new.json
   def new
     @receipe = Receipe.new
-    @receipe.aromas.build
+    @receipe.aroma_bundles.build
+    @selectable_aromas = Aroma.all
 
     respond_to do |format|
       format.html # new.html.erb
@@ -36,6 +37,7 @@ class ReceipesController < ApplicationController
   # GET /receipes/1/edit
   def edit
     @receipe = Receipe.find(params[:id])
+    @selectable_aromas = Aroma.all
   end
 
   # POST /receipes
